@@ -88,7 +88,7 @@ public class AppointmentController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
-        [Bind("AppointmentID,Date,Time,PatientID,DoctorID")]
+        [Bind("AppointmentID,AppointmentDateTime,PatientID,DoctorID,Reason,Status")]
         Appointment appointment)
     {
         _context.Add(appointment);
@@ -121,7 +121,7 @@ public class AppointmentController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id,
-        [Bind("AppointmentID,Date,Time,PatientID,DoctorID")]
+        [Bind("AppointmentID,AppointmentDateTime,PatientID,DoctorID,Reason,Status")]
         Appointment appointment)
     {
         if (id != appointment.AppointmentID)

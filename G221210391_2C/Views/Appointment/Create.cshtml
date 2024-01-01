@@ -13,13 +13,13 @@
 
     <div class="form-group">
         <label asp-for="PatientID"></label>
-        <select asp-for="PatientID" asp-items="@(new SelectList(ViewBag.Patients, "PatientID", "FullName"))" class="form-control"></select>
+        <select asp-for="PatientID" asp-items="@(new SelectList(ViewBag.Patients, "PatientID", "FirstName"))" class="form-control"></select>
         <span asp-validation-for="PatientID" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="DoctorID"></label>
-        <select asp-for="DoctorID" asp-items="@(new SelectList(ViewBag.Doctors, "DoctorID", "FullName"))" class="form-control"></select>
+        <select asp-for="DoctorID" asp-items="@(new SelectList(ViewBag.Doctors, "DoctorID", "FirstName"))" class="form-control"></select>
         <span asp-validation-for="DoctorID" class="text-danger"></span>
     </div>
 
