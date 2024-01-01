@@ -1,0 +1,44 @@
+@page
+@model G221210391_2C.Views.Department.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Model.Department[0].DepartmentName
+        </th>
+        <th>
+            @Model.Department[0].Description
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Department)
+    {
+        <tr>
+            <td>
+                @item.DepartmentName
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.DepartmentID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.DepartmentID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.DepartmentID">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
