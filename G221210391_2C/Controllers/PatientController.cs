@@ -50,13 +50,21 @@ public class PatientController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
-        [Bind("PatientID,FirstName,LastName,DateOfBirth,Gender,Address,ContactNumber,Email")] Patient patient)
+        [Bind("PatientID,FirstName,LastName,DateOfBirth,Gender,Address,ContactNumber,Email")]
+        Patient patient, string? refPage)
     {
         if (PatientValidationIsValid(patient))
         {
             _context.Add(patient);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (refPage == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return RedirectToAction("Appointment", "Home");
+            }
         }
 
         return View(patient);
@@ -84,7 +92,8 @@ public class PatientController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id,
-        [Bind("PatientID,FirstName,LastName,DateOfBirth,Gender,Address,ContactNumber,Email")] Patient patient)
+        [Bind("PatientID,FirstName,LastName,DateOfBirth,Gender,Address,ContactNumber,Email")]
+        Patient patient)
     {
         if (id != patient.PatientID)
         {
