@@ -1,0 +1,23 @@
+@model Patient
+
+<h2>Delete Patient</h2>
+
+<div>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Patient ID: @Model.PatientID</h4>
+        <h4>First Name: @Model.FirstName</h4>
+        <h4>Last Name: @Model.LastName</h4>
+        <h4>Date of Birth: @Model.DateOfBirth</h4>
+        <h4>Gender: @Model.Gender</h4>
+        <h4>Contact Number: @Model.ContactNumber</h4>
+        <h4>Email: @Model.Email</h4>
+    </div>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="PatientID" />
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,37 @@
+@model List<Appointment>
+
+<h2>Appointment List</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Appointment ID</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Patient</th>
+        <th>Doctor</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var appointment in Model)
+    {
+        <tr>
+            <td>@appointment.AppointmentID</td>
+            <td>@appointment.AppointmentDateTime.ToShortDateString()</td>
+            <td>@appointment.AppointmentDateTime.ToShortTimeString()</td>
+            <td>@appointment.Patient.FirstName @appointment.Patient.LastName</td>
+            <td>@appointment.Doctor.FirstName @appointment.Doctor.LastName</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@appointment.AppointmentID">Details</a> |
+                <a asp-action="Edit" asp-route-id="@appointment.AppointmentID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@appointment.AppointmentID">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -22,7 +22,6 @@ public class DoctorContext : DbContext
             .HasForeignKey(d => d.DepartmentID);
 
         // Add other configurations as needed
-
         base.OnModelCreating(modelBuilder);
     }
 }

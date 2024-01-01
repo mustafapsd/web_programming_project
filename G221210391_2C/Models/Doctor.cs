@@ -10,26 +10,26 @@ public class Doctor
     public int DoctorID { get; set; }
 
     [Required(ErrorMessage = "First Name is required")]
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = "";
 
     [Required(ErrorMessage = "Last Name is required")]
-    public string LastName { get; set; }
+    public string LastName { get; set; } = "";
 
     [Required(ErrorMessage = "Specialization is required")]
-    public string Specialization { get; set; }
+    public string Specialization { get; set; } = "";
 
     [Required(ErrorMessage = "Contact Number is required")]
-    public string ContactNumber { get; set; }
+    public string ContactNumber { get; set; } = "";
 
     [Required(ErrorMessage = "Email is required")]
     [EmailAddress(ErrorMessage = "Invalid Email Address")]
-    public string Email { get; set; }
+    public string Email { get; set; } = "";
     
-    // Foreign key for HospitalDepartment
+    // Foreign key for Department 
     [ForeignKey("Department")]
-    public int DepartmentID { get; set; }
+    public int DepartmentID { get; set; } = 0;
 
-    // Other relevant properties can be added as needed
+    // Other relevant properties can be added as neededs
 
     // Navigation properties
     public Department Department { get; set; }

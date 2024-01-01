@@ -1,44 +1,33 @@
-@page
-@model G221210391_2C.Views.Department.IndexModel
+@model List<Department>
 
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h1>Index</h1>
+<h2>Department List</h2>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
-    <tr>
-        <th>
-            @Model.Department[0].DepartmentName
-        </th>
-        <th>
-            @Model.Department[0].Description
-        </th>
-        <th></th>
-    </tr>
+        <tr>
+            <th>Department ID</th>
+            <th>Department Name</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model.Department)
-    {
-        <tr>
-            <td>
-                @item.DepartmentName
-            </td>
-            <td>
-                @item.Description
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.DepartmentID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.DepartmentID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.DepartmentID">Delete</a>
-            </td>
-        </tr>
-    }
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td>@department.DepartmentID</td>
+                <td>@department.DepartmentName</td>
+                <td>@department.Description</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@department.DepartmentID">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@department.DepartmentID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@department.DepartmentID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
